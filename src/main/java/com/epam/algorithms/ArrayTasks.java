@@ -109,7 +109,28 @@ public class ArrayTasks {
      * arr = [[3, 1, 2,], [3,2]] -> [[2, 3], [1, 2, 3]] arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-        return null;
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j].length > arr[j + 1].length) {
+                    var temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+
+        for (var line : arr) {
+            for (int i = 0; i < line.length - 1; ++i) {
+                for (int j = 0; j < line.length - 1 - i; ++j) {
+                    if (line[j] > line[j + 1]) {
+                        var temp = line[j];
+                        line[j] = line[j + 1];
+                        line[j + 1] = temp;
+                    }
+                }
+            }
+        }
+        return arr;
     }
 
 }
